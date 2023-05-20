@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 102.6, "left": -304.4, "attrs": {} },
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -78.19, "left": 44.14, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 140.8,
+      "left": 188,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -94.8,
+      "left": -129.44,
+      "attrs": { "temperature": "-14.2", "humidity": "54" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -31.1,
+      "left": -214.19,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -63.78,
+      "left": -308.27,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 323.36,
+      "left": -217.77,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:SDA", "esp:D21", "green", [ "h-28.04", "v-209.81" ] ],
+    [ "lcd1:SCL", "esp:D22", "purple", [ "h-15.31", "v-248.21" ] ],
+    [ "esp:VIN", "bb1:tp.25", "red", [ "h0" ] ],
+    [ "esp:GND.2", "bb1:tn.24", "black", [ "h0" ] ],
+    [ "esp:D14", "dht1:SDA", "blue", [ "h0" ] ],
+    [ "dht1:GND", "bb1:tn.17", "black", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:tp.15", "red", [ "v0" ] ],
+    [ "lcd1:GND", "bb1:28t.c", "black", [ "h0" ] ],
+    [ "bb1:tn.23", "bb1:28t.a", "black", [ "v0" ] ],
+    [ "lcd1:VCC", "bb1:27t.d", "red", [ "h0" ] ],
+    [ "bb1:tp.22", "bb1:27t.a", "red", [ "v0" ] ],
+    [ "esp:D12", "bz1:2", "red", [ "h0" ] ],
+    [ "bz1:1", "bb1:tn.9", "black", [ "v0" ] ],
+    [ "esp:D13", "pir1:OUT", "magenta", [ "h0" ] ],
+    [ "pir1:VCC", "bb1:tp.1", "red", [ "v0" ] ],
+    [ "pir1:GND", "bb1:tn.3", "black", [ "v0" ] ],
+    [ "esp:D27", "bb1:30b.f", "gold", [ "h-48.31", "v188.19" ] ],
+    [ "ldr1:DO", "bb1:30b.j", "green", [ "h0" ] ],
+    [ "ldr1:GND", "bb1:28b.j", "black", [ "h0" ] ],
+    [ "ldr1:VCC", "bb1:27b.j", "red", [ "h0" ] ],
+    [ "bb1:28t.e", "bb1:28b.f", "black", [ "v0" ] ],
+    [ "bb1:27t.e", "bb1:27b.f", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
